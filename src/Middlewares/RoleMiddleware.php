@@ -18,7 +18,7 @@ class RoleMiddleware
             ? $role
             : explode('|', $role);
 
-        if (! Auth::user()->hasAnyRole($roles)) {
+        if (! Auth::user()->user->hasAnyRole($roles)) {
             throw UnauthorizedException::forRoles($roles);
         }
 
