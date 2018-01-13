@@ -63,7 +63,7 @@ class PermissionServiceProvider extends ServiceProvider
             $bladeCompiler->directive('role', function ($arguments) {
                 list($role, $guard) = explode(',', $arguments.',');
 
-                return "<?php if(auth({$guard})->check() && auth({$guard})->user()->hasRole({$role})): ?>";
+                return "<?php if(auth({$guard})->check() && auth({$guard})->user()->user->hasRole({$role})): ?>";
             });
             $bladeCompiler->directive('endrole', function () {
                 return '<?php endif; ?>';
@@ -72,7 +72,7 @@ class PermissionServiceProvider extends ServiceProvider
             $bladeCompiler->directive('hasrole', function ($arguments) {
                 list($role, $guard) = explode(',', $arguments.',');
 
-                return "<?php if(auth({$guard})->check() && auth({$guard})->user()->hasRole({$role})): ?>";
+                return "<?php if(auth({$guard})->check() && auth({$guard})->user()->user->hasRole({$role})): ?>";
             });
             $bladeCompiler->directive('endhasrole', function () {
                 return '<?php endif; ?>';
@@ -81,7 +81,7 @@ class PermissionServiceProvider extends ServiceProvider
             $bladeCompiler->directive('hasanyrole', function ($arguments) {
                 list($roles, $guard) = explode(',', $arguments.',');
 
-                return "<?php if(auth({$guard})->check() && auth({$guard})->user()->hasAnyRole({$roles})): ?>";
+                return "<?php if(auth({$guard})->check() && auth({$guard})->user()->user->hasAnyRole({$roles})): ?>";
             });
             $bladeCompiler->directive('endhasanyrole', function () {
                 return '<?php endif; ?>';
@@ -90,7 +90,7 @@ class PermissionServiceProvider extends ServiceProvider
             $bladeCompiler->directive('hasallroles', function ($arguments) {
                 list($roles, $guard) = explode(',', $arguments.',');
 
-                return "<?php if(auth({$guard})->check() && auth({$guard})->user()->hasAllRoles({$roles})): ?>";
+                return "<?php if(auth({$guard})->check() && auth({$guard})->user()->user->hasAllRoles({$roles})): ?>";
             });
             $bladeCompiler->directive('endhasallroles', function () {
                 return '<?php endif; ?>';
